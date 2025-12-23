@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Consultancy Site – High Fidelity Mockup</title>
+  <title>Ginhi Iwasaki – AI / IT / Cybersecurity Consultant</title>
   <style>
     body { font-family: 'Helvetica Neue', Arial, sans-serif; margin: 0; background: #f9fafb; color: #1f2937; line-height: 1.6; }
     header, section, footer { padding: 40px 20px; }
@@ -17,7 +17,14 @@
     .hero p { font-size: 1.2rem; margin-bottom: 1.5rem; }
     .cta { background: #10b981; color: white; padding: 12px 24px; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; transition: background 0.3s; }
     .cta:hover { background: #059669; }
-    .hero-photo { width: 240px; height: 240px; border-radius: 50%; background: #e5e7eb; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; color: #6b7280; }
+
+    .hero-photo img {
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    }
 
     .services h2, .insights h2, .testimonials h2, .about h2, .contact h2 { font-size: 1.8rem; margin-bottom: 20px; color: #0f172a; }
     .grid { display: grid; gap: 20px; }
@@ -37,7 +44,13 @@
     .testimonials .card { font-style: italic; }
 
     .about { display: flex; gap: 40px; align-items: center; background: #ffffff; padding: 60px 20px; }
-    .about img { width: 220px; height: 220px; border-radius: 50%; background: #d1d5db; }
+    .about img {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    }
     .about p { font-size: 1.1rem; }
 
     .contact { display: flex; flex-wrap: wrap; gap: 40px; background: #f9fafb; }
@@ -50,8 +63,9 @@
   </style>
 </head>
 <body>
+
   <header>
-    <div><strong>Your Logo/Name</strong></div>
+    <div><strong>Ginhi Iwasaki</strong></div>
     <nav>
       <a href="#services">Services</a>
       <a href="#insights">Insights</a>
@@ -62,11 +76,22 @@
 
   <section class="hero">
     <div class="hero-text">
+      <!-- === Choose One of These Three === -->
+      <!-- ① Professional -->
       <h1>Helping organizations accelerate digital transformation with AI, Cybersecurity, and IT strategy.</h1>
+
+      <!-- ② Value-Driven -->
+      <!-- <h1>Driving measurable business impact through pragmatic AI, Security, and IT transformation.</h1> -->
+
+      <!-- ③ Personal / Global -->
+      <!-- <h1>Global consultant bridging cultures, technology, and business execution — based in Tokyo.</h1> -->
+
       <p>Tokyo-based, globally focused.</p>
       <button class="cta">Work with me</button>
     </div>
-    <div class="hero-photo">Your Photo</div>
+    <div class="hero-photo">
+      <img src="profile.jpg" alt="Ginhi Iwasaki profile photo">
+    </div>
   </section>
 
   <section id="services" class="services">
@@ -81,7 +106,11 @@
   </section>
 
   <section class="proof">
-    <div class="bio">Global IT, AI, and cybersecurity consultant with holistic expertise. Partnered with organizations from Fortune 100 financial institutions to Japanese conglomerates.</div>
+    <div class="bio">
+      Global IT, AI, and cybersecurity consultant with holistic expertise.
+      Partnered with organizations from Fortune 100 financial institutions
+      to Japanese conglomerates.
+    </div>
     <div class="logos">
       <div class="card">Global Pharma Client</div>
       <div class="card">Japanese Electronics Manufacturer</div>
@@ -108,10 +137,15 @@
   </section>
 
   <section id="about" class="about">
-    <img alt="Your Photo" />
+    <img src="profile.jpg" alt="Ginhi Iwasaki">
     <div>
       <h2>About Me</h2>
-      <p>From global IT leadership to independent consultancy. I bridge not only systems, but also cultures. With experience across continents, I help organizations translate technology into sustainable business impact.</p>
+      <p>
+        From global IT leadership to independent consultancy.
+        I bridge not only systems, but also cultures.
+        With experience across continents, I help organizations
+        translate technology into sustainable business impact.
+      </p>
     </div>
   </section>
 
@@ -127,12 +161,13 @@
     <div>
       <h3>Book a Call</h3>
       <button class="cta">Free 15-min Consult</button>
-      <p>Find me on <a href="#" style="color:#10b981; text-decoration:none;">LinkedIn</a></p>
+      <p>Connect on <a href="https://www.linkedin.com/in/ginhi-i-a2249761/" target="_blank" style="color:#10b981; text-decoration:none;">LinkedIn</a></p>
     </div>
   </section>
 
   <footer>
-    © Your Name | LinkedIn | Email
+    © Ginhi Iwasaki | <a href="https://www.linkedin.com/in/ginhi-i-a2249761/" target="_blank" style="color:#94a3b8; text-decoration:none;">LinkedIn</a>
   </footer>
+
 </body>
 </html>
