@@ -1,147 +1,462 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ginhi Iwasaki – AI / IT / Cybersecurity Consultant</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ginhi Iwasaki – Data × AI × Security Consultant</title>
 
   <style>
-    body {
-      font-family: 'Helvetica Neue', Arial, sans-serif;
-      margin: 0;
-      background: #f9fafb;
-      color: #1f2937;
-      line-height: 1.6;
+    :root{
+      --bg: #0b0d10;
+      --panel: rgba(255,255,255,0.03);
+      --panel2: rgba(255,255,255,0.02);
+      --fg: #e9eef5;
+      --muted: rgba(233,238,245,.68);
+      --line: rgba(233,238,245,.14);
+      --line2: rgba(233,238,245,.10);
+      --accent: rgba(140,190,255,.90); /* ice blue */
+      --accent2: rgba(16,185,129,.88); /* subtle green if needed */
+      --shadow: 0 18px 50px rgba(0,0,0,0.35);
+      --radius: 18px;
     }
 
-    header, section, footer { padding: 40px 20px; }
+    *{ box-sizing: border-box; }
+    html{ scroll-behavior: smooth; }
+    body{
+      font-family: ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+      margin: 0;
+      background: radial-gradient(1200px 700px at 20% 10%, rgba(140,190,255,0.10), transparent 55%),
+                  radial-gradient(900px 600px at 85% 15%, rgba(255,255,255,0.06), transparent 55%),
+                  var(--bg);
+      color: var(--fg);
+      line-height: 1.6;
+      letter-spacing: .2px;
+    }
 
-    header {
-      background: #0f172a;
-      color: white;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    a{ color: var(--fg); text-decoration: none; border-bottom: 1px solid var(--line2); }
+    a:hover{ border-bottom-color: var(--accent); }
+
+    header, section, footer{ padding: 36px 20px; }
+
+    .container{ max-width: 1100px; margin: 0 auto; }
+
+    header{
       position: sticky;
       top: 0;
       z-index: 100;
+      backdrop-filter: blur(10px);
+      background: rgba(11,13,16,0.72);
+      border-bottom: 1px solid var(--line);
     }
 
-    nav a {
-      margin: 0 15px;
-      color: #f9fafb;
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    nav a:hover { color: #10b981; }
-
-    .lang-toggle button {
-      background: none;
-      border: 1px solid #94a3b8;
-      color: #94a3b8;
-      margin-left: 8px;
-      padding: 4px 10px;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-    .lang-toggle button.active {
-      background: #10b981;
-      color: white;
-      border-color: #10b981;
-    }
-
-    .hero {
+    .header-inner{
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      align-items: center;
-      background: linear-gradient(135deg, #1e3a8a, #0f172a);
-      color: white;
-      padding: 80px 20px;
+      gap: 16px;
     }
 
-    .hero-text { max-width: 55%; }
-
-    .hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .cta {
-      background: #10b981;
-      color: white;
-      padding: 12px 24px;
-      border-radius: 10px;
-      font-weight: bold;
-      text-decoration: none;
-      display: inline-block;
-    }
-
-    .cta:hover { background: #059669; }
-
-    .hero-photo img {
-      width: 240px;
-      height: 240px;
-      border-radius: 50%;
-      object-fit: cover;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-    }
-
-    h2 { color: #0f172a; }
-
-    .grid {
-      display: grid;
-      gap: 20px;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    }
-
-    .card {
-      background: white;
-      padding: 24px;
-      border-radius: 14px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    }
-
-    .about {
+    .brand{
       display: flex;
-      gap: 40px;
+      align-items: center;
+      gap: 12px;
+      min-width: 210px;
+    }
+
+    .brand-mark{
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      position: relative;
+      overflow: hidden;
+    }
+    .brand-mark:before{
+      content:"";
+      position:absolute;
+      inset:-40%;
+      border-radius: 999px;
+      border: 1px solid rgba(233,238,245,0.18);
+      transform: rotate(18deg);
+    }
+    .brand-mark:after{
+      content:"";
+      position:absolute;
+      inset:-30%;
+      border-radius: 999px;
+      border: 1px solid rgba(140,190,255,0.20);
+      transform: rotate(-12deg);
+    }
+
+    .brand-name{
+      font-weight: 650;
+      letter-spacing: .4px;
+      font-size: 0.98rem;
+    }
+
+    nav{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+    }
+
+    nav a{
+      border-bottom: none;
+      color: var(--muted);
+      font-weight: 520;
+      padding: 8px 10px;
+      border-radius: 999px;
+      transition: all .15s ease;
+    }
+    nav a:hover{
+      color: var(--fg);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .lang-toggle{
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      min-width: 120px;
+      justify-content: flex-end;
+    }
+
+    .lang-toggle button{
+      background: transparent;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      padding: 6px 10px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 600;
+      letter-spacing: .3px;
+      transition: all .15s ease;
+    }
+
+    .lang-toggle button.active{
+      border-color: rgba(140,190,255,0.55);
+      color: var(--fg);
+      background: rgba(140,190,255,0.12);
+    }
+
+    .hero{
+      padding: 70px 20px 48px;
+    }
+
+    .hero-inner{
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 28px;
       align-items: center;
     }
 
-    .about img {
+    .hero h1{
+      font-size: clamp(2rem, 2.6vw, 2.7rem);
+      margin: 0 0 14px 0;
+      line-height: 1.18;
+      letter-spacing: .2px;
+    }
+
+    .hero p{
+      margin: 0 0 18px 0;
+      color: var(--muted);
+      max-width: 68ch;
+      font-size: 1.05rem;
+    }
+
+    .hero-meta{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .pill{
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.02);
+      color: var(--muted);
+      font-size: 0.92rem;
+      letter-spacing: .2px;
+    }
+
+    .cta-row{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 22px;
+      align-items: center;
+    }
+
+    .btn{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(140,190,255,0.40);
+      background: rgba(140,190,255,0.12);
+      color: var(--fg);
+      font-weight: 650;
+      letter-spacing: .2px;
+      cursor: pointer;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      text-decoration: none;
+    }
+    .btn:hover{ transform: translateY(-1px); background: rgba(140,190,255,0.16); border-color: rgba(140,190,255,0.55); }
+    .btn.secondary{
+      background: transparent;
+      border: 1px solid var(--line);
+      color: var(--muted);
+    }
+    .btn.secondary:hover{
+      background: rgba(255,255,255,0.04);
+      color: var(--fg);
+      border-color: rgba(233,238,245,0.22);
+    }
+
+    .hero-photo{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-photo img{
       width: 220px;
       height: 220px;
-      border-radius: 50%;
+      border-radius: 999px;
       object-fit: cover;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      background: rgba(255,255,255,0.03);
     }
 
-    footer {
-      background: #0f172a;
-      color: #94a3b8;
+    .section{
+      border-top: 1px solid var(--line);
+    }
+
+    h2{
+      margin: 0 0 14px 0;
+      font-size: 1.45rem;
+      letter-spacing: .2px;
+    }
+
+    .subhead{
+      margin: 0 0 24px 0;
+      color: var(--muted);
+      max-width: 74ch;
+      font-size: 1.02rem;
+    }
+
+    .grid{
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+
+    .card{
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: none;
+    }
+
+    .card h3{
+      margin: 0 0 10px 0;
+      font-size: 1.05rem;
+      letter-spacing: .2px;
+    }
+
+    .card p{
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    /* Services accordion */
+    details{
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 0;
+      overflow: hidden;
+    }
+
+    summary{
+      list-style: none;
+      cursor: pointer;
+      padding: 18px;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      border-bottom: 1px solid transparent;
+    }
+    summary::-webkit-details-marker{ display: none; }
+
+    .svc-title{
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-width: 0;
+    }
+    .svc-title strong{
+      font-size: 1.05rem;
+      letter-spacing: .2px;
+    }
+    .svc-title span{
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .svc-tag{
+      flex: 0 0 auto;
+      color: rgba(140,190,255,0.85);
+      border: 1px solid rgba(140,190,255,0.32);
+      background: rgba(140,190,255,0.10);
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-weight: 650;
+      font-size: 0.88rem;
+      white-space: nowrap;
+    }
+
+    details[open] summary{ border-bottom-color: var(--line); }
+    .svc-body{
+      padding: 16px 18px 18px;
+      background: var(--panel2);
+    }
+    .svc-body ul{
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+    .svc-body li{ margin: 8px 0; }
+
+    /* Case studies */
+    .case-meta{
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .case-kv{
+      margin-top: 12px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.02);
+      color: var(--muted);
+    }
+    .case-kv strong{ color: var(--fg); }
+
+    /* About */
+    .about{
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 24px;
+      align-items: start;
+    }
+    .about img{
+      width: 220px;
+      height: 220px;
+      border-radius: 999px;
+      object-fit: cover;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+    }
+    .about-box{
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 18px;
+    }
+    .about-box p{ margin: 0 0 14px 0; color: var(--muted); }
+    .about-box ul{
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    /* Tables */
+    .table-wrap{
+      overflow: auto;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+    }
+    table{
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 880px;
+    }
+    th, td{
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      text-align: left;
+    }
+    th{
+      color: var(--fg);
+      font-weight: 650;
+      background: rgba(255,255,255,0.02);
+    }
+    td{ color: var(--muted); }
+    .note{
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin: 12px 0 0 0;
+      max-width: 80ch;
+    }
+
+    /* Contact */
+    .contact-row{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-top: 12px;
+    }
+
+    footer{
+      border-top: 1px solid var(--line);
+      color: rgba(233,238,245,0.55);
       text-align: center;
-      font-size: 0.9rem;
-      padding: 20px;
+      font-size: 0.92rem;
+      padding: 22px 20px;
+    }
+
+    /* Responsive */
+    @media (max-width: 860px){
+      .hero-inner{ grid-template-columns: 1fr; }
+      .hero-photo{ justify-content: flex-start; }
+      .about{ grid-template-columns: 1fr; }
+      .brand{ min-width: auto; }
+      nav{ justify-content: flex-start; }
+      .lang-toggle{ min-width: auto; }
     }
   </style>
 
-  <!-- Calendly -->
   <script>
     const CALENDLY_URL = "https://calendly.com/coffeentea";
     let currentLang = "en";
 
+    // Use innerHTML to allow small formatting (lists, <strong>, etc.)
     function switchLang(lang) {
       currentLang = lang;
       document.querySelectorAll("[data-en]").forEach(el => {
-        el.innerText = el.dataset[lang];
+        const value = el.dataset[lang];
+        if (value !== undefined) el.innerHTML = value;
       });
       document.querySelectorAll(".lang-toggle button").forEach(b => b.classList.remove("active"));
-      document.getElementById("btn-" + lang).classList.add("active");
+      const btn = document.getElementById("btn-" + lang);
+      if (btn) btn.classList.add("active");
     }
 
     window.onload = () => switchLang("en");
@@ -151,85 +466,485 @@
 <body>
 
 <header>
-  <strong>Ginhi Iwasaki</strong>
+  <div class="container header-inner">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true"></div>
+      <div class="brand-name">Ginhi Iwasaki</div>
+    </div>
 
-  <nav>
-    <a href="#services">Services</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-  </nav>
+    <nav>
+      <a href="#services" data-en="Services" data-jp="Services"></a>
+      <a href="#case-studies" data-en="Case Studies" data-jp="Case Studies"></a>
+      <a href="#about" data-en="About" data-jp="About"></a>
+      <a href="#rate-card" data-en="Rate Card" data-jp="Rate Card"></a>
+      <a href="#contact" data-en="Contact" data-jp="Contact"></a>
+    </nav>
 
-  <div class="lang-toggle">
-    <button id="btn-en" onclick="switchLang('en')">EN</button>
-    <button id="btn-jp" onclick="switchLang('jp')">JP</button>
+    <div class="lang-toggle">
+      <button id="btn-en" onclick="switchLang('en')">EN</button>
+      <button id="btn-jp" onclick="switchLang('jp')">JP</button>
+    </div>
   </div>
 </header>
 
 <section class="hero">
-  <div class="hero-text">
-    <h1
-      data-en="Driving measurable business impact through pragmatic AI, Cybersecurity, and IT transformation."
-      data-jp="AI・サイバーセキュリティ・IT変革を通じて、実行可能で測定可能なビジネス成果を実現します。">
-    </h1>
+  <div class="container hero-inner">
+    <div class="hero-text">
+      <h1
+        data-en="Quietly complex. Operationally alive."
+        data-jp="静かに複雑で、事業を動かし続ける。">
+      </h1>
 
-    <p
-      data-en="Tokyo-based, globally focused."
-      data-jp="東京を拠点に、グローバルに支援しています。">
+      <p
+        data-en="I build the data, AI, and security foundation that keeps your business activating—continuously."
+        data-jp="データ×AI×セキュリティで、事業が“活性化し続ける”ための土台と実装を設計します。">
+      </p>
+
+      <div class="cta-row">
+        <a class="btn" href="#" onclick="window.open(CALENDLY_URL, '_blank')"
+           data-en="Book a 30-min call"
+           data-jp="30分相談を予約">
+        </a>
+        <a class="btn secondary" href="#rate-card"
+           data-en="View rate card (2026)"
+           data-jp="レートカードを見る（2026）">
+        </a>
+      </div>
+
+      <div class="hero-meta">
+        <span class="pill"
+          data-en="Tokyo-based · Global enterprise experience"
+          data-jp="東京拠点 · グローバル企業支援の経験">
+        </span>
+        <span class="pill"
+          data-en="Tech · AI · Data · Security"
+          data-jp="Tech · AI · Data · Security">
+        </span>
+        <span class="pill"
+          data-en="Robotics / Physical AI enablement"
+          data-jp="Robotics / Physical AI 支援">
+        </span>
+      </div>
+    </div>
+
+    <div class="hero-photo">
+      <img src="profile.jpg" alt="Ginhi Iwasaki" />
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="section">
+  <div class="container">
+    <h2 data-en="Services" data-jp="提供サービス"></h2>
+    <p class="subhead"
+      data-en="A simple surface. A deep structure underneath. Choose a layer—or run the full loop."
+      data-jp="表面はシンプルに。内側は深い構造で。単発でも、土台→実装→継続のループでも支援します。">
     </p>
 
-    <a href="#" class="cta"
-       onclick="window.open(CALENDLY_URL, '_blank')"
-       data-en="Work with me"
-       data-jp="相談する">
-    </a>
-  </div>
+    <div class="grid">
+      <details>
+        <summary>
+          <div class="svc-title">
+            <strong data-en="Foundation" data-jp="Foundation（土台）"></strong>
+            <span data-en="Build the base that keeps your business activating."
+                  data-jp="事業が動き続ける“土台”を設計します。"></span>
+          </div>
+          <div class="svc-tag" data-en="Structure" data-jp="Structure"></div>
+        </summary>
+        <div class="svc-body">
+          <ul>
+            <li data-en="Data platform architecture (warehouse/lakehouse), integration, and data quality."
+                data-jp="データ基盤（DWH/Lakehouse）、統合、データ品質の設計。"></li>
+            <li data-en="Operating model: KPI definition, ownership, decision cadence, cost controls."
+                data-jp="運用モデル：KPI設計、責任分界、意思決定のリズム、コスト管理。"></li>
+            <li data-en="Security by design for data/AI: identity, segmentation, key management, audit."
+                data-jp="Data/AI前提の Security by Design：ID、分離、鍵管理、監査。"></li>
+            <li data-en="Governance that enables speed (not bureaucracy): minimal rules, high clarity."
+                data-jp="スピードを止めないガバナンス：最小ルールで最大の明確性。"></li>
+          </ul>
+        </div>
+      </details>
 
-  <div class="hero-photo">
-    <img src="profile.jpg" alt="Ginhi Iwasaki">
+      <details>
+        <summary>
+          <div class="svc-title">
+            <strong data-en="Activation" data-jp="Activation（実装）"></strong>
+            <span data-en="Turn data & AI into decisions and workflows."
+                  data-jp="データ×AIを、意思決定と業務フローに落とします。"></span>
+          </div>
+          <div class="svc-tag" data-en="Build" data-jp="Build"></div>
+        </summary>
+        <div class="svc-body">
+          <ul>
+            <li data-en="Use-case discovery → value sizing → prioritization (what to build, why now)."
+                data-jp="ユースケース探索→価値試算→優先順位（何を、なぜ今やるか）。"></li>
+            <li data-en="LLM/agent workflows, RAG systems, automation with production constraints."
+                data-jp="LLM/Agent、RAG、業務自動化を“本番制約”込みで設計。"></li>
+            <li data-en="Japan GTM for Data/AI/Security: ICP, narrative, event-to-pipeline, partners."
+                data-jp="Japan GTM（Data/AI/Security）：ICP、価値訴求、イベント→パイプライン、パートナー。"></li>
+            <li data-en="Robotics / Physical AI: pilot design, field readiness, telemetry data loop."
+                data-jp="Robotics / Physical AI：パイロット設計、現場展開、テレメトリデータ改善ループ。"></li>
+          </ul>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <div class="svc-title">
+            <strong data-en="Scale" data-jp="Scale（継続稼働）"></strong>
+            <span data-en="Operate safely, reliably, continuously."
+                  data-jp="安全に、確実に、止まらずに回し続けます。"></span>
+          </div>
+          <div class="svc-tag" data-en="Operate" data-jp="Operate"></div>
+        </summary>
+        <div class="svc-body">
+          <ul>
+            <li data-en="MLOps: evaluation, monitoring, iteration. Observability for AI systems."
+                data-jp="MLOps：評価・監視・改善。AIシステムの可観測性（Observability）。"></li>
+            <li data-en="Continuous security & compliance ops (ISMS / P-Mark alignment when needed)."
+                data-jp="継続的なセキュリティ＆コンプライアンス運用（必要に応じISMS/Pマーク整合）。"></li>
+            <li data-en="Change management: safe releases, measurable adoption, governance feedback loops."
+                data-jp="変更管理：安全なリリース、定着の可視化、ガバナンスのフィードバックループ。"></li>
+            <li data-en="Executive-ready reporting: clear decisions, clear tradeoffs, clear next actions."
+                data-jp="経営が判断できるレポーティング：意思決定・トレードオフ・次アクションを明確に。"></li>
+          </ul>
+        </div>
+      </details>
+    </div>
   </div>
 </section>
 
-<section id="services">
-  <h2 data-en="What I Do" data-jp="提供サービス"></h2>
-  <div class="grid">
-    <div class="card">AI & Data Strategy</div>
-    <div class="card">Cybersecurity Risk & Compliance</div>
-    <div class="card">IT Infrastructure & Cloud</div>
-    <div class="card">Digital Transformation (DX)</div>
-    <div class="card">Vendor Management</div>
-  </div>
-</section>
+<!-- CASE STUDIES -->
+<section id="case-studies" class="section">
+  <div class="container">
+    <h2 data-en="Case Studies" data-jp="ケーススタディ"></h2>
+    <p class="subhead"
+      data-en="Short stories. Clear shifts. The point is what changed in decisions and operations."
+      data-jp="短く、しかし本質的に。“何が変わったか”だけを残します。">
+    </p>
 
-<section id="about" class="about">
-  <img src="profile.jpg" alt="Ginhi Iwasaki">
-  <div>
-    <h2 data-en="About Me" data-jp="プロフィール"></h2>
-    <p
-      data-en="I help organizations bridge technology, execution, and culture to deliver sustainable results."
-      data-jp="テクノロジー・実行力・文化をつなぎ、持続的な成果を生み出す支援を行っています。">
+    <div class="grid">
+      <!-- Manufacturing -->
+      <div class="card">
+        <h3 data-en="Manufacturing: process optimization and faster decisions"
+            data-jp="製造：プロセス最適化と意思決定の短縮"></h3>
+
+        <div class="case-kv">
+          <div><strong data-en="Outcome:" data-jp="成果:"></strong>
+            <span data-en=" A shared operational view that reduced decision latency and rework."
+                  data-jp=" 共通の“運用視点”を確立し、判断の遅れと手戻りを削減。"></span>
+          </div>
+        </div>
+
+        <p class="case-meta"
+           data-en="<strong>Before:</strong> siloed data, local optimizations, slow cross-functional consensus.<br><strong>Intervention:</strong> unified data model + KPI cadence + executive-ready decision views.<br><strong>After:</strong> faster prioritization, clearer tradeoffs, and measurable process improvements."
+           data-jp="<strong>Before:</strong> データがサイロ化し、局所最適で合意形成が遅い。<br><strong>Intervention:</strong> 統合データモデル＋KPI運用＋経営が判断できるビューを設計。<br><strong>After:</strong> 優先順位付けが加速し、トレードオフが明確化。プロセス改善を定量化。">
+        </p>
+      </div>
+
+      <!-- Logistics / Black Swan -->
+      <div class="card">
+        <h3 data-en="Logistics (Black Swan): executive strategy plan under disruption"
+            data-jp="物流（Black Swan）：混乱下での経営向け戦略プラン"></h3>
+
+        <div class="case-kv">
+          <div><strong data-en="Outcome:" data-jp="成果:"></strong>
+            <span data-en=" A decision framework that aligned stakeholders when supply chains became unstable."
+                  data-jp=" サプライチェーン混乱時に、意思決定の枠組みで関係者を統一。"></span>
+          </div>
+        </div>
+
+        <p class="case-meta"
+           data-en="<strong>Before:</strong> fragmented signals, competing priorities, and reactive firefighting.<br><strong>Intervention:</strong> scenario framing + constraints mapping + executive options with clear tradeoffs.<br><strong>After:</strong> faster alignment, clearer escalation paths, and a repeatable playbook for the next shock."
+           data-jp="<strong>Before:</strong> シグナルが断片化し、優先度が競合、場当たり対応に陥る。<br><strong>Intervention:</strong> シナリオ整理＋制約条件の可視化＋経営オプション（トレードオフ明示）を作成。<br><strong>After:</strong> 合意形成が加速し、エスカレーションが明確化。次の衝撃にも使えるプレイブック化。">
+        </p>
+      </div>
+
+      <!-- Finance -->
+      <div class="card">
+        <h3 data-en="Finance: using data safely in regulated banking operations"
+            data-jp="金融：規制下で“安全に”データを銀行業務へ活用"></h3>
+
+        <div class="case-kv">
+          <div><strong data-en="Outcome:" data-jp="成果:"></strong>
+            <span data-en=" Data access and controls designed to unlock use-cases without increasing risk posture."
+                  data-jp=" リスク姿勢を悪化させず、ユースケースを解放するデータ統制を設計。"></span>
+          </div>
+        </div>
+
+        <p class="case-meta"
+           data-en="<strong>Before:</strong> security/compliance uncertainty blocked data use; unclear ownership and auditability.<br><strong>Intervention:</strong> identity &amp; access design + audit trails + minimal governance gates for speed.<br><strong>After:</strong> safer data utilization in operations and clearer pathways for AI adoption."
+           data-jp="<strong>Before:</strong> セキュリティ/コンプライアンス不確実性で活用が止まり、責任分界と監査性が曖昧。<br><strong>Intervention:</strong> ID/権限設計＋監査ログ＋スピードを止めない最小ガバナンスを設計。<br><strong>After:</strong> 業務での安全なデータ活用が進み、AI導入の道筋も明確化。">
+        </p>
+      </div>
+    </div>
+
+    <p class="note"
+      data-en="Note: details can be anonymized. These can be refined into your real project narratives over time."
+      data-jp="※社名や詳細は匿名化でOK。時間をかけて“実案件の物語”に精緻化できます。">
     </p>
   </div>
 </section>
 
-<section id="contact">
-  <h2 data-en="Let’s Connect" data-jp="お問い合わせ"></h2>
-  <a href="#" class="cta"
-     onclick="window.open(CALENDLY_URL, '_blank')"
-     data-en="Free 15-min Consult"
-     data-jp="15分無料相談">
-  </a>
+<!-- ABOUT -->
+<section id="about" class="section">
+  <div class="container">
+    <h2 data-en="About" data-jp="プロフィール"></h2>
+    <p class="subhead"
+      data-en="I don’t sell “more tools.” I design the structure that makes technology run—quietly, continuously."
+      data-jp="「ツール導入」ではなく、“止まらず回り続ける構造”を設計します。">
+    </p>
 
-  <p>
-    <a href="https://www.linkedin.com/in/ginhi-i-a2249761/"
-       target="_blank"
-       style="color:#10b981;">
-      LinkedIn
-    </a>
-  </p>
+    <div class="about">
+      <div>
+        <img src="profile.jpg" alt="Ginhi Iwasaki" />
+      </div>
+
+      <div class="about-box">
+        <!-- Philosophy first -->
+        <p
+          data-en="I work at the intersection of technology, decision-making, and trust. My approach is to compress complexity beneath a calm surface—so executives can decide, teams can ship, and systems can operate safely at scale."
+          data-jp="私はテクノロジー・意思決定・信頼の交点で仕事をしています。複雑さを“静かな表面”の下に圧縮し、経営が判断し、現場が実装し、システムが止まらずに回る状態を作ります。">
+        </p>
+
+        <p
+          data-en="My domains are Tech, AI, Data, and Security—plus Robotics/Physical AI when the product meets the field."
+          data-jp="領域は Tech / AI / Data / Security。加えて、プロダクトが現場に出る瞬間の Robotics / Physical AI も支援します。">
+        </p>
+
+        <!-- Experience (minimal / anonymized except Palantir) -->
+        <div class="case-kv" style="margin-top:14px;">
+          <div style="margin-bottom:6px;">
+            <strong data-en="Selected Experience" data-jp="主な経歴（抜粋）"></strong>
+          </div>
+
+          <div style="color: var(--muted); font-size: 0.96rem; line-height: 1.55;"
+            data-en="
+              <strong>Palantir Technologies</strong> — Growth &amp; Strategic Accounts / BD Lead (May 2024 – Feb 2025). Built Japan commercial motion for Foundry/Gotham/AIP; bootcamps proving ROI in weeks; mission-critical engagements across manufacturing, logistics, public sector/defense, finance &amp; telco.<br>
+              <strong>Global Telco / Security Services</strong> — Senior Client Partner. Enterprise security programs (SOC/SIEM/IR) and complex solution selling across multiple technology towers.<br>
+              <strong>Cloud Security (Zero Trust)</strong> — Regional Account role. Large enterprise engagements, M&amp;A integration support, partner co-sell pipeline creation, and talent enablement.<br>
+              <strong>Global Network / Cloud / UCC</strong> — Global Account leadership. Digital manufacturing initiatives (energy saving, predictive maintenance, OT security) and strategic account expansion.<br>
+              <strong>FMCG / Consumer</strong> — Account management and commercial analytics; GTM initiatives and execution excellence."
+            data-jp="
+              <strong>Palantir Technologies</strong> — Growth &amp; Strategic Accounts / BD Lead（2024/05–2025/02）。Foundry/Gotham/AIPの日本市場で商談モーションを立上げ。Bootcampで短期間にROIを検証。製造・物流・公共/防衛・金融・通信などミッションクリティカル領域を推進。<br>
+              <strong>グローバル通信 / セキュリティサービス</strong> — Senior Client Partner。SOC/SIEM/IR等のエンタープライズセキュリティ案件と複合ソリューション提案を推進。<br>
+              <strong>クラウドセキュリティ（Zero Trust）</strong> — Regional Account。大手企業の案件推進、M&amp;A統合支援、パートナー共販パイプライン創出、育成。<br>
+              <strong>ネットワーク / クラウド / UCC</strong> — Global Account。デジタル製造（省エネ・予兆保全・OTセキュリティ）と戦略アカウント拡大。<br>
+              <strong>消費財</strong> — アカウント運営と商用分析、GTM施策の企画・実行。">
+          </div>
+        </div>
+
+        <!-- Impact numbers (single place, unified) -->
+        <div class="case-kv" style="margin-top:12px;">
+          <div style="margin-bottom:6px;">
+            <strong data-en="Selected Impact (signals)" data-jp="成果（サマリー）"></strong>
+          </div>
+          <div style="color: var(--muted); font-size: 0.96rem; line-height: 1.6;"
+            data-en="
+              • Delivered multi-million ARR outcomes and enterprise-scale expansions.<br>
+              • FY performance example: $1M target → $2M result (200% attainment).<br>
+              • Built large partner pipelines and executive-level programs across regulated industries."
+            data-jp="
+              ・マルチミリオン規模のARR創出と、エンタープライズ展開への拡張を推進。<br>
+              ・成果例：ターゲット $1M → 実績 $2M（達成率 200%）。<br>
+              ・規制業界におけるパートナー共販パイプラインと、経営層プログラムを構築。">
+          </div>
+        </div>
+
+        <!-- What you do -->
+        <ul style="margin-top:14px;">
+          <li
+            data-en="Translate complex tech into executive-grade decisions: clear tradeoffs, clear next actions."
+            data-jp="複雑な技術を“経営が判断できる形”に編集：トレードオフと次アクションを明確化。"></li>
+          <li
+            data-en="Build foundations that don’t slow teams down: minimal rules, high clarity."
+            data-jp="チームのスピードを止めない土台：最小ルールで最大の明確性。"></li>
+          <li
+            data-en="Activation + operations: ship to production, then keep it alive with metrics and feedback loops."
+            data-jp="実装→継続稼働まで：本番に載せ、指標と改善ループで“動き続ける”状態へ。"></li>
+        </ul>
+
+        <div class="cta-row" style="margin-top:16px;">
+          <a class="btn secondary" href="https://www.linkedin.com/in/ginhi-i-a2249761/" target="_blank"
+             data-en="LinkedIn"
+             data-jp="LinkedIn">
+          </a>
+          <a class="btn" href="#" onclick="window.open(CALENDLY_URL, '_blank')"
+             data-en="Work with me"
+             data-jp="相談する">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RATE CARD -->
+<section id="rate-card" class="section">
+  <div class="container">
+    <h2 data-en="Rate Card (2026)" data-jp="レートカード（2026）"></h2>
+    <p class="subhead"
+      data-en="Japan GTM Support: IT Consulting Rate Card (2026). Flexible to scope, stage, and deal motion."
+      data-jp="Japan GTM Support: IT Consulting Rate Card (2026)。スコープ・フェーズ・商談形態に合わせて調整可能です。">
+    </p>
+
+    <h3 data-en="1) Professional Service Rates (Time & Materials)"
+        data-jp="1) プロフェッショナルサービス（Time & Materials）"></h3>
+    <p class="note"
+      data-en="Applies to strategic planning, localization oversight, and business development."
+      data-jp="戦略設計、ローカライズ推進、BD支援に適用。">
+    </p>
+
+    <div class="table-wrap" style="margin-top:10px;">
+      <table>
+        <thead>
+          <tr>
+            <th data-en="Role" data-jp="Role"></th>
+            <th data-en="Hourly Rate (JPY)" data-jp="時給（JPY）"></th>
+            <th data-en="Monthly Retainer (Ref)" data-jp="月額リテイナー（目安）"></th>
+            <th data-en="Key Responsibilities" data-jp="主な責務"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-en="Partner / Strategic Advisor" data-jp="Partner / Strategic Advisor"></td>
+            <td>¥60,000 – ¥100,000</td>
+            <td>¥1,200,000+</td>
+            <td data-en="High-level strategy, C-level networking, regulatory lobbying."
+                data-jp="経営戦略、CxOネットワーキング、規制/業界対応の推進。"></td>
+          </tr>
+          <tr>
+            <td data-en="GTM Lead / Senior Consultant" data-jp="GTM Lead / Senior Consultant"></td>
+            <td>¥40,000 – ¥60,000</td>
+            <td>¥2,000,000 – ¥3,500,000</td>
+            <td data-en="Localization roadmap, pricing strategy, hiring oversight."
+                data-jp="ローカライズ計画、価格戦略、採用/体制設計の推進。"></td>
+          </tr>
+          <tr>
+            <td data-en="Technical Consultant / SA" data-jp="Technical Consultant / SA"></td>
+            <td>¥30,000 – ¥45,000</td>
+            <td>¥1,500,000 – ¥2,500,000</td>
+            <td data-en="API/Product localization, security compliance (ISMS/P-Mark)."
+                data-jp="API/製品面のローカライズ、セキュリティ整合（ISMS/Pマーク）。"></td>
+          </tr>
+          <tr>
+            <td data-en="Junior Consultant / Analyst" data-jp="Junior Consultant / Analyst"></td>
+            <td>¥15,000 – ¥25,000</td>
+            <td>¥800,000 – ¥1,500,000</td>
+            <td data-en="Market research, translation review, lead list building."
+                data-jp="市場調査、翻訳レビュー、リードリスト作成。"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="margin-top:26px;"
+        data-en="2) Performance-Based Incentives (Net New Sales)"
+        data-jp="2) 成果報酬（Net New Sales）"></h3>
+    <p class="note"
+      data-en="Hybrid model (Retainer + Success Fee) is common for foreign SaaS firms."
+      data-jp="外資SaaSでは（リテイナー＋成果報酬）のハイブリッドが一般的です。">
+    </p>
+
+    <div class="table-wrap" style="margin-top:10px;">
+      <table>
+        <thead>
+          <tr>
+            <th data-en="Category" data-jp="カテゴリ"></th>
+            <th data-en="Unit / Metric" data-jp="単位 / 指標"></th>
+            <th data-en="Fee Setting (2026 Market Rate)" data-jp="フィー設定（2026目安）"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-en="Pipeline Generation" data-jp="Pipeline Generation"></td>
+            <td data-en="Per Qualified Lead (SQL)" data-jp="Qualified Lead（SQL）単位"></td>
+            <td><strong>¥50,000 – ¥150,000</strong> <span style="color:var(--muted);" data-en="(Varies by ACV size)" data-jp="（ACVにより変動）"></span></td>
+          </tr>
+          <tr>
+            <td data-en="First 10 Customers" data-jp="First 10 Customers"></td>
+            <td data-en="Success Fee" data-jp="成果報酬"></td>
+            <td><strong>15% – 25% of First Year ACV</strong></td>
+          </tr>
+          <tr>
+            <td data-en="Channel Partner Setup" data-jp="Channel Partner Setup"></td>
+            <td data-en="Per Signed Distributor" data-jp="契約ディストリビューター単位"></td>
+            <td><strong>¥500,000 – ¥1,500,000</strong> <span style="color:var(--muted);" data-en="(Milestone based)" data-jp="（マイルストーン）"></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="margin-top:26px;"
+        data-en="3) Fixed-Fee Project Packages"
+        data-jp="3) 固定費パッケージ"></h3>
+
+    <div class="grid" style="margin-top:10px;">
+      <div class="card">
+        <h3 data-en="Phase 1: Market Feasibility Study (4–6 weeks)"
+            data-jp="Phase 1：市場適合性調査（4–6週間）"></h3>
+        <p data-en="Deliverables: competitor analysis, pricing localization, regulatory gap analysis."
+           data-jp="成果物：競合分析、価格ローカライズ、規制ギャップ分析。"></p>
+        <p style="margin-top:10px;"><strong>¥3,000,000 – ¥5,000,000</strong></p>
+      </div>
+      <div class="card">
+        <h3 data-en="Phase 2: Soft Launch / Beta Program (3 months)"
+            data-jp="Phase 2：ソフトローンチ / ベータ（3ヶ月）"></h3>
+        <p data-en="Deliverables: 3–5 pilot users, localized deck, initial feedback loop."
+           data-jp="成果物：3–5社のパイロット、ローカライズ資料、改善ループ立上げ。"></p>
+        <p style="margin-top:10px;"><strong>¥6,000,000 – ¥10,000,000</strong></p>
+      </div>
+    </div>
+
+    <h3 style="margin-top:26px;"
+        data-en="Strategic Considerations for 2026"
+        data-jp="2026 戦略的補足"></h3>
+
+    <div class="card" style="margin-top:10px;">
+      <ol style="margin:0; padding-left:18px; color: var(--muted);">
+        <li data-en="<strong>AI Localization Premium:</strong> beyond translation—cultural AI tuning (Keigo, context). +15–20% premium."
+            data-jp="<strong>AIローカライズ・プレミアム:</strong> 翻訳ではなく文化適合（敬語/文脈）。+15–20%が目安。"></li>
+        <li data-en="<strong>Japan Entry Tax (Complexity):</strong> trust-heavy procurement cycles require a “trust proxy.”"
+            data-jp="<strong>Japan Entry Tax（複雑性）:</strong> 信頼を前提とする購買プロセスで“信頼の代理”が必要。"></li>
+        <li data-en="<strong>Tiered Success Fees:</strong> under ¥2M ACV: up to 25%. over ¥10M: 10–12% + bridge fee."
+            data-jp="<strong>成果報酬の階層化:</strong> ACV¥2M未満は高め（〜25%）。ACV¥10M超は10–12%＋ブリッジフィー。"></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <div class="container">
+    <h2 data-en="Contact" data-jp="お問い合わせ"></h2>
+    <p class="subhead"
+      data-en="If you want a calm surface with a deep structure underneath, let’s talk."
+      data-jp="静かな表面の下に深い構造を置きたいなら、一度話しましょう。">
+    </p>
+
+    <div class="contact-row">
+      <a class="btn" href="#" onclick="window.open(CALENDLY_URL, '_blank')"
+         data-en="Book a call"
+         data-jp="相談を予約">
+      </a>
+      <a class="btn secondary" href="https://www.linkedin.com/in/ginhi-i-a2249761/" target="_blank"
+         data-en="LinkedIn"
+         data-jp="LinkedIn">
+      </a>
+    </div>
+
+    <p class="note" style="margin-top:14px;"
+      data-en="Typical starting points: GTM discovery, AI activation roadmap, data/security foundations, robotics pilot readiness."
+      data-jp="よくある開始点：GTM探索、AI実装ロードマップ、データ/セキュリティ基盤、ロボティクスのパイロット準備。">
+    </p>
+  </div>
 </section>
 
 <footer>
-  © Ginhi Iwasaki
+  <div class="container">
+    © Ginhi Iwasaki
+  </div>
 </footer>
 
 </body>
